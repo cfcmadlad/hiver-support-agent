@@ -41,13 +41,15 @@ data/
 
 ## Setup
 
-Requires [uv](https://docs.astral.sh/uv/).
+Requires Python 3.12+.
 
 ```bash
-uv sync
+python -m venv .venv
+.venv/Scripts/activate   # .venv/bin/activate on macOS/Linux
+pip install -e ".[dev]"
 ```
 
-This creates `.venv` and installs everything pinned in `uv.lock`: `anthropic`, `pydantic`, `pandas`, `click` as runtime dependencies, `ruff`, `mypy`, `pytest` as dev dependencies.
+This installs `anthropic`, `pydantic`, `pandas`, `click` as runtime dependencies, `ruff`, `mypy`, `pytest` as the `dev` extra.
 
 Set your Anthropic API key before running anything that calls Claude (session 2 onward):
 
@@ -72,7 +74,7 @@ The full `twcs.csv` from the Kaggle dataset is expected at `data/raw/archive/twc
 Not yet implemented. The domain interfaces (`Classifier`, `ReplyDrafter`, `Judge` in [src/domain/models.py](src/domain/models.py)) are defined; the Claude-backed adapters and orchestration wiring land in the next session.
 
 ```bash
-uv run python -m interfaces.cli
+python -m interfaces.cli
 ```
 
 Target: once the pipeline and eval harness exist, reproducing the headline results from a clean clone takes under 15 minutes.
@@ -80,7 +82,7 @@ Target: once the pipeline and eval harness exist, reproducing the headline resul
 ## Development
 
 ```bash
-uv run ruff check .
-uv run mypy src eval tests
-uv run pytest
+ruff check .
+mypy src eval tests
+pytest
 ```
