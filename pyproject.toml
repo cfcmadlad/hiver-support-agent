@@ -1,0 +1,38 @@
+[project]
+name = "hiver-support-agent"
+version = "0.1.0"
+description = "AI customer-support agent over the Customer Support on Twitter dataset, scoped to SpotifyCares"
+authors = [
+    { name = "cfcmadlad", email = "173536959+cfcmadlad@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic",
+    "pydantic",
+    "pandas",
+    "click",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "mypy",
+    "pytest",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/domain", "src/adapters", "src/orchestration", "src/interfaces", "src/config", "eval"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
