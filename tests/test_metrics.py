@@ -1,7 +1,7 @@
 import pytest
 
 from domain.intents import Intent
-from domain.metrics import classification_accuracy, cohens_kappa, per_intent_counts
+from domain.metrics import classification_accuracy, cohens_kappa, per_intent_counts, raw_agreement
 
 
 def test_classification_accuracy() -> None:
@@ -27,6 +27,22 @@ def test_per_intent_counts() -> None:
     assert counts[Intent.BILLING_DISPUTE].true_positive == 2
     assert counts[Intent.BILLING_DISPUTE].false_negative == 1
     assert counts[Intent.PLAYBACK_BUG].false_positive == 1
+
+
+def test_raw_agreement() -> None:
+    rater_a = [True, True, False, False]
+    rater_b = [True, False, False, False]
+    assert raw_agreement(rater_a, rater_b) == pytest.approx(0.75)
+
+
+def test_raw_agreement_rejects_length_mismatch() -> None:
+    with pytest.raises(ValueError):
+        raw_agreement([True], [True, False])
+
+
+def test_raw_agreement_rejects_empty_input() -> None:
+    with pytest.raises(ValueError):
+        raw_agreement([], [])
 
 
 def test_cohens_kappa_perfect_agreement() -> None:

@@ -6,9 +6,9 @@ from config.settings import Settings
 from domain.intents import Intent
 from domain.models import ClassificationResult, DraftReply, JudgeVerdict, Message, PrecedentIndex
 
-_CLASSIFY_MAX_TOKENS = 300
-_DRAFT_MAX_TOKENS = 600
-_JUDGE_MAX_TOKENS = 300
+_CLASSIFY_MAX_TOKENS = 400
+_DRAFT_MAX_TOKENS = 700
+_JUDGE_MAX_TOKENS = 500
 
 
 class LLMResponseError(Exception):
@@ -35,22 +35,21 @@ def _cached_parse[T: BaseModel](
         system,
         {"user_content": user_content, "schema": output_format.__name__, "max_tokens": max_tokens},
     )
-    cached = cache.get(key)
-    if cached is not None:
-        return output_format.model_validate_json(cached)
 
-    response = client.messages.parse(
-        model=model,
-        max_tokens=max_tokens,
-        system=system,
-        messages=[{"role": "user", "content": user_content}],
-        output_format=output_format,
-    )
-    result = response.parsed_output
-    if result is None:
-        raise LLMResponseError(error_context)
-    cache.set(key, result.model_dump_json())
-    return result
+    def compute() -> str:
+        response = client.messages.parse(
+            model=model,
+            max_tokens=max_tokens,
+            system=system,
+            messages=[{"role": "user", "content": user_content}],
+            output_format=output_format,
+        )
+        result = response.parsed_output
+        if result is None:
+            raise LLMResponseError(error_context)
+        return result.model_dump_json()
+
+    return output_format.model_validate_json(cache.get_or_set(key, compute))
 
 
 class ClaudeClassifier:
@@ -63,7 +62,8 @@ class ClaudeClassifier:
         system = (
             "You classify customer support messages sent to SpotifyCares into exactly one intent. "
             f"Valid intents: {', '.join(intent.value for intent in Intent)}. "
-            "Report your own confidence in the classification as a number between 0 and 1."
+            "Report your own confidence in the classification as a number between 0 and 1, "
+            "with a rationale of one concise sentence."
         )
         return _cached_parse(
             self._client,
@@ -125,7 +125,7 @@ class ClaudeJudge:
         system = (
             "You are an impartial evaluator of SpotifyCares customer support replies. "
             "Score how well the reply addresses the customer's message from 1 (poor) to 5 "
-            "(excellent), with a short rationale."
+            "(excellent), with a rationale of one or two sentences."
         )
         user_content = f"Customer message: {message.text}\n\nSupport reply: {reply.text}"
         return _cached_parse(

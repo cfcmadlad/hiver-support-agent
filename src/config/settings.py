@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 from pydantic import BaseModel
 
 from domain.intents import Intent
@@ -24,7 +25,9 @@ class Settings(BaseModel):
         {Intent.BILLING_DISPUTE, Intent.CANCELLATION_RETENTION}
     )
     precedent_k: int = 3
+    max_workers: int = 8
 
     @classmethod
     def from_env(cls) -> "Settings":
+        load_dotenv()
         return cls(anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY"))

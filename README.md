@@ -54,8 +54,11 @@ This installs `anthropic`, `pydantic`, `pandas`, `click` as runtime dependencies
 Set your Anthropic API key before running anything that calls Claude (session 2 onward):
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+cp .env.example .env
+# edit .env and set ANTHROPIC_API_KEY=sk-ant-...
 ```
+
+`Settings.from_env()` loads `.env` automatically via `python-dotenv`. Note: `load_dotenv()` does not override an `ANTHROPIC_API_KEY` already set in your shell environment — if you previously exported one, unset it (`unset ANTHROPIC_API_KEY`) so `.env` takes effect.
 
 ## Dataset
 
