@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Protocol
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from domain.intents import Intent
 
@@ -18,10 +18,22 @@ class Conversation(BaseModel):
     conversation_id: str
     messages: list[Message]
 
+    def root_customer_message(self, brand_author_id: str) -> "Message | None":
+        for message in self.messages:
+            if message.author_id != brand_author_id:
+                return message
+        return None
+
+    def last_brand_message(self, brand_author_id: str) -> "Message | None":
+        for message in reversed(self.messages):
+            if message.author_id == brand_author_id:
+                return message
+        return None
+
 
 class ClassificationResult(BaseModel):
     intent: Intent
-    confidence: float
+    confidence: float = Field(ge=0, le=1)
     rationale: str
 
 
@@ -33,6 +45,18 @@ class DraftReply(BaseModel):
 class EscalationDecision(BaseModel):
     escalate: bool
     reason: str
+
+
+class Precedent(BaseModel):
+    message: Message
+    resolution: str
+
+
+class PrecedentIndex(BaseModel):
+    by_intent: dict[Intent, list[Precedent]]
+
+    def similar(self, intent: Intent, k: int) -> list[Precedent]:
+        return self.by_intent.get(intent, [])[:k]
 
 
 class JudgeVerdict(BaseModel):

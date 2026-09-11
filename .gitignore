@@ -9,5 +9,8 @@ __pycache__/
 
 data/raw/
 data/subsample/
+data/cache/
 
 .claude/
+
+STUDY_NOTES.md
