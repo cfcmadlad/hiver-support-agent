@@ -10,6 +10,7 @@ dependencies = [
     "anthropic",
     "pydantic",
     "pandas",
+    "numpy",
     "click",
     "python-dotenv",
 ]

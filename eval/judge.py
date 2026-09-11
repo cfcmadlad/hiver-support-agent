@@ -53,7 +53,9 @@ def load_golden_set(path: Path) -> list[GoldenExample]:
                 conversation_id=row["conversation_id"],
                 customer_message=row["customer_message"],
                 true_intent=Intent(row["true_intent"]),
-                true_escalate=_parse_bool(row["true_escalate"], row["conversation_id"], "true_escalate"),
+                true_escalate=_parse_bool(
+                    row["true_escalate"], row["conversation_id"], "true_escalate"
+                ),
                 notes=row["notes"],
             )
             for row in csv.DictReader(f)
@@ -114,7 +116,9 @@ def evaluate_system(
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         outcomes = list(
             executor.map(
-                lambda example: _evaluate_one(example, classifier, drafter, judge, escalation_policy),
+                lambda example: _evaluate_one(
+                    example, classifier, drafter, judge, escalation_policy
+                ),
                 examples,
             )
         )

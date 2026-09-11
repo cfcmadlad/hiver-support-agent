@@ -29,7 +29,9 @@ def classify(text: str) -> None:
     cache = ResponseCache(settings.cache_dir)
     classifier = ClaudeClassifier(client, settings, cache)
 
-    message = Message(id="adhoc", author_id="cli", text=text, created_at=datetime.now(UTC), in_reply_to_id=None)
+    message = Message(
+        id="adhoc", author_id="cli", text=text, created_at=datetime.now(UTC), in_reply_to_id=None
+    )
     result = classifier.classify(message)
     click.echo(f"intent: {result.intent.value} (confidence {result.confidence:.2f})")
     click.echo(f"rationale: {result.rationale}")

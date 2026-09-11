@@ -22,7 +22,7 @@ class Settings(BaseModel):
     seed: int = 42
     confidence_threshold: float = 0.7
     high_risk_intents: frozenset[Intent] = frozenset(
-        {Intent.BILLING_DISPUTE, Intent.CANCELLATION_RETENTION}
+        {Intent.BILLING_DISPUTE, Intent.CANCELLATION_RETENTION, Intent.ACCOUNT_ACCESS}
     )
     precedent_k: int = 3
     max_workers: int = 8

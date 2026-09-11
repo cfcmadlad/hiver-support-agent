@@ -112,7 +112,9 @@ class ClaudeReplyDrafter:
             output_format=_DraftOutput,
             error_context=f"drafter returned no parseable output for message {message.id}",
         )
-        return DraftReply(text=output.text, grounded_on=[precedent.message.id for precedent in examples])
+        return DraftReply(
+            text=output.text, grounded_on=[precedent.message.id for precedent in examples]
+        )
 
 
 class ClaudeJudge:

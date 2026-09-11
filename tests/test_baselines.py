@@ -6,7 +6,9 @@ from eval.baselines import CannedReplyDrafter, KeywordClassifier
 
 
 def _message(text: str) -> Message:
-    return Message(id="1", author_id="customer", text=text, created_at=datetime.now(UTC), in_reply_to_id=None)
+    return Message(
+        id="1", author_id="customer", text=text, created_at=datetime.now(UTC), in_reply_to_id=None
+    )
 
 
 def test_classifies_billing_dispute() -> None:

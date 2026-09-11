@@ -19,7 +19,9 @@ class _FakeClassifier:
         self._confidence = confidence
 
     def classify(self, message: Message) -> ClassificationResult:
-        return ClassificationResult(intent=self._intent, confidence=self._confidence, rationale="fake")
+        return ClassificationResult(
+            intent=self._intent, confidence=self._confidence, rationale="fake"
+        )
 
 
 class _FakeDrafter:
@@ -51,7 +53,11 @@ def _example(conversation_id: str = "1") -> GoldenExample:
 
 def test_evaluate_system_applies_escalation_policy() -> None:
     results, failures = evaluate_system(
-        [_example()], _FakeClassifier(Intent.PLAYBACK_BUG, 0.95), _FakeDrafter(), _FakeJudge(), POLICY
+        [_example()],
+        _FakeClassifier(Intent.PLAYBACK_BUG, 0.95),
+        _FakeDrafter(),
+        _FakeJudge(),
+        POLICY,
     )
     assert failures == []
     assert results[0].predicted_escalate is False
@@ -61,7 +67,11 @@ def test_evaluate_system_applies_escalation_policy() -> None:
 
 def test_evaluate_system_high_risk_intent_escalates() -> None:
     results, failures = evaluate_system(
-        [_example()], _FakeClassifier(Intent.BILLING_DISPUTE, 0.99), _FakeDrafter(), _FakeJudge(), POLICY
+        [_example()],
+        _FakeClassifier(Intent.BILLING_DISPUTE, 0.99),
+        _FakeDrafter(),
+        _FakeJudge(),
+        POLICY,
     )
     assert failures == []
     assert results[0].predicted_escalate is True
@@ -69,7 +79,11 @@ def test_evaluate_system_high_risk_intent_escalates() -> None:
 
 def test_evaluate_system_none_policy_never_escalates() -> None:
     results, failures = evaluate_system(
-        [_example()], _FakeClassifier(Intent.BILLING_DISPUTE, 0.99), _FakeDrafter(), _FakeJudge(), None
+        [_example()],
+        _FakeClassifier(Intent.BILLING_DISPUTE, 0.99),
+        _FakeDrafter(),
+        _FakeJudge(),
+        None,
     )
     assert failures == []
     assert results[0].predicted_escalate is False

@@ -76,7 +76,9 @@ def _run_and_report(
     click.echo(f"--- {label} ---")
     report = compute_agreement(results)
     click.echo(f"n={report.n}")
-    click.echo(f"intent raw agreement: {report.intent_raw_agreement:.3f}  kappa: {report.intent_kappa:.3f}")
+    click.echo(
+        f"intent raw agreement: {report.intent_raw_agreement:.3f}  kappa: {report.intent_kappa:.3f}"
+    )
     click.echo(
         f"escalate raw agreement: {report.escalate_raw_agreement:.3f}  kappa: {report.escalate_kappa:.3f}"
     )
@@ -103,12 +105,21 @@ def _run_and_report(
     type=click.Path(path_type=Path),
     show_default=True,
 )
-def evaluate(limit: int | None, precedent_pool_size: int, results_dir: Path) -> None:
+@click.option(
+    "--golden-path",
+    default=None,
+    type=click.Path(path_type=Path),
+    help="Override the golden set to evaluate against, e.g. a held-out validation set. "
+    "Defaults to settings.golden_path.",
+)
+def evaluate(
+    limit: int | None, precedent_pool_size: int, results_dir: Path, golden_path: Path | None
+) -> None:
     settings = Settings.from_env()
     client = build_client(settings)
     cache = ResponseCache(settings.cache_dir)
 
-    examples = load_golden_set(settings.golden_path)
+    examples = load_golden_set(golden_path or settings.golden_path)
     if limit is not None:
         examples = examples[:limit]
     click.echo(f"Loaded {len(examples)} golden examples.")
@@ -127,8 +138,15 @@ def evaluate(limit: int | None, precedent_pool_size: int, results_dir: Path) -> 
     policy = build_escalation_policy(settings)
 
     _run_and_report(
-        "full agent", "full_agent", examples, classifier, drafter, judge, policy,
-        settings.max_workers, results_dir,
+        "full agent",
+        "full_agent",
+        examples,
+        classifier,
+        drafter,
+        judge,
+        policy,
+        settings.max_workers,
+        results_dir,
     )
 
     ungrounded_settings = settings.model_copy(update={"sonnet_model": settings.haiku_model})
@@ -136,13 +154,27 @@ def evaluate(limit: int | None, precedent_pool_size: int, results_dir: Path) -> 
         client, ungrounded_settings, cache, PrecedentIndex(by_intent={})
     )
     _run_and_report(
-        "baseline 2: zero-shot ungrounded Haiku", "baseline2", examples, classifier,
-        baseline2_drafter, judge, policy, settings.max_workers, results_dir,
+        "baseline 2: zero-shot ungrounded Haiku",
+        "baseline2",
+        examples,
+        classifier,
+        baseline2_drafter,
+        judge,
+        policy,
+        settings.max_workers,
+        results_dir,
     )
 
     _run_and_report(
-        "baseline 1: keyword + canned reply", "baseline1", examples, KeywordClassifier(),
-        CannedReplyDrafter(), judge, None, settings.max_workers, results_dir,
+        "baseline 1: keyword + canned reply",
+        "baseline1",
+        examples,
+        KeywordClassifier(),
+        CannedReplyDrafter(),
+        judge,
+        None,
+        settings.max_workers,
+        results_dir,
     )
 
 

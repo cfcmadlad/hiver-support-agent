@@ -5,7 +5,12 @@ from domain.metrics import classification_accuracy, cohens_kappa, per_intent_cou
 
 
 def test_classification_accuracy() -> None:
-    predictions = [Intent.BILLING_DISPUTE, Intent.PLAYBACK_BUG, Intent.BILLING_DISPUTE, Intent.OTHER]
+    predictions = [
+        Intent.BILLING_DISPUTE,
+        Intent.PLAYBACK_BUG,
+        Intent.BILLING_DISPUTE,
+        Intent.OTHER,
+    ]
     ground_truth = [Intent.BILLING_DISPUTE, Intent.PLAYBACK_BUG, Intent.PLAYBACK_BUG, Intent.OTHER]
     assert classification_accuracy(predictions, ground_truth) == pytest.approx(0.75)
 

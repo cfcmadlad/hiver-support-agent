@@ -94,7 +94,9 @@ class KeywordClassifier:
                     return ClassificationResult(
                         intent=intent, confidence=1.0, rationale=f"matched keyword '{keyword}'"
                     )
-        return ClassificationResult(intent=Intent.OTHER, confidence=1.0, rationale="no keyword matched")
+        return ClassificationResult(
+            intent=Intent.OTHER, confidence=1.0, rationale="no keyword matched"
+        )
 
 
 class CannedReplyDrafter:

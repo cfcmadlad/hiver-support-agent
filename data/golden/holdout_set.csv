@@ -1,0 +1,42 @@
+conversation_id,customer_message,true_intent,true_escalate,notes,labeled_by,labeled_at
+594077,Hello @SpotifyCares! My account has been hacked. Got an email telling me my email has changed and I can't log in anymore. I already messaged you earlier. Please look into it and reply asap! I want my spotify!!! Tnx,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:06:09.092362+00:00
+926940,"@SpotifyCares I keep getting ""phantom"" music playing, will show some random song/playlist is being played on ""spotify web player""",playback_bug,True,,aditya1325.raps@gmail.com,2026-09-11T14:06:27.229301+00:00
+2076258,@115888 why sometimes the app just erases 90% of my download songs and then spends DAYS downloading them again? Its the 2nd time this month,playback_bug,True,,aditya1325.raps@gmail.com,2026-09-11T14:06:41.645465+00:00
+1432655,@116130 @115888 Is there anyway to update the ‘Running’ feature? Same songs over and over is a little annoying.,feature_question,False,,aditya1325.raps@gmail.com,2026-09-11T14:06:56.932782+00:00
+1095348,@115888 Can you tell me where to find what email address my account is registered? Forgot my password but not sure where it’s sent to ...,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:07:15.719001+00:00
+2604316,"@SpotifyCares hi, I had trouble logging into my account and when I got in with facebook it has a random email listed instead of mine (__email__?!). I can't change it because it won't accept any of my passwords and I can't do a reset as this is the wrong email.",account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:07:25.403498+00:00
+2043238,@115888 I can't get into my account. It keeps asking me for to log into Facebook when I don't have one. Can't reset my password?,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:07:32.238560+00:00
+2038720,@SpotifyCares hi I need to change the account associated with my @121122 entertainment pack after upgrade,account_access,False,,aditya1325.raps@gmail.com,2026-09-11T14:07:41.747432+00:00
+1915177,@SpotifyCares I just signed up for premium with the student deal. Completed verification and was charged. But do not have premium. Help!,billing_dispute,True,,aditya1325.raps@gmail.com,2026-09-11T14:07:58.222760+00:00
+1849988,"@SpotifyCares my gf's on iOS 11, 6s. she updated app today and now her car's handsfree skip/prev track buttons don't work with spotify",playback_bug,False,,aditya1325.raps@gmail.com,2026-09-11T14:09:15.992858+00:00
+1659914,@115888 Having a problem with my account which seems un-solvable. Could you please message me?,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:09:23.811844+00:00
+2318629,When @115888 spells @7350 project name wrong https://t.co/cTV0WW72Md,playback_bug,False,,aditya1325.raps@gmail.com,2026-09-11T14:09:33.120704+00:00
+2290445,@115888 hi i want to cancel my trial for spotify,cancellation_retention,False,,aditya1325.raps@gmail.com,2026-09-11T14:09:41.401332+00:00
+1078963,@115888 been trying to update my payment for 5 days. Any pointers?,billing_dispute,False,,aditya1325.raps@gmail.com,2026-09-11T14:09:47.582843+00:00
+454702,@SpotifyCares can u answer my DM pls pretty pls,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:10:04.012247+00:00
+2224102,Fucking Spotify won't issue a refund for the month!!! Da fuq i was supposed to do??? Everything is and still spotty af.,cancellation_retention,True,,aditya1325.raps@gmail.com,2026-09-11T14:10:15.766008+00:00
+1531534,@SpotifyCares I'm trying to have only my email to sign in to my account. Can't reset password because I deleted my Facebook account.,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:11:03.944882+00:00
+1526267,"@SpotifyCares Will you ever fix the minutes-long loading times, timeouts and errors Windows desktop users have been enduring for years?",feature_question,False,,aditya1325.raps@gmail.com,2026-09-11T14:11:11.795356+00:00
+2483537,@115888 wyd suddenly playing music from banners when im trying to listen to concentration music and im hearing idris elba talk about Sky,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:11:18.964223+00:00
+2970345,"@SpotifyCares hi, I deactivated Facebook and now can’t log in to my account on Spotify. I’ve tried signing up for a new account but it says my email is already in use even tho I signed up through Facebook. How can I keep all my playlists but rid my account of Facebook?? Tks",account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:12:17.356528+00:00
+2755882,"@SpotifyCares i downloaded the app to create an account,and it wont let me??i tap the button and nothing is happening,yet i redownloaded the app again and same things happening",playback_bug,False,,aditya1325.raps@gmail.com,2026-09-11T14:12:27.792423+00:00
+2246108,@115888 Genius sucks,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:12:33.766420+00:00
+1399659,@SpotifyCares @115888 I love how you can cancel my account in seconds but can't help adjust my issues after hours.,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:12:45.896163+00:00
+1093444,"@115888 @6443 why did you remove the @10789 ""the suburbs"" album? please return it",playback_bug,False,,aditya1325.raps@gmail.com,2026-09-11T14:12:54.133440+00:00
+1420266,@115888 PLEASE fix the volume of my favorite recording of the Pines of Rome. Literally WHY is it so quiet. Please. I'm hurt.,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:01.280179+00:00
+2306179,@SpotifyCares also how can someone get around the unidays not working? UK university.,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:09.234370+00:00
+1486689,one of my old passwords was in a paste so now my primary hobby is changing all of my passwords to everything,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:19.117116+00:00
+1644195,@SpotifyCares - When will the app be updated for iPhone X? It looks absolutely ridiculous currently. Apple Music is looking mighty nice...,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:24.612446+00:00
+1938399,@SpotifyCares so I recently just joined my sisters Spotify family so what do I need to do about my old subscription under my name only?,account_access,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:32.741267+00:00
+1407552,The @SpotifyCares desktop app has been mind meltingly slow for me of late 😩 #justtryinamakeaplaylist,feature_question,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:39.251439+00:00
+1596824,"@SpotifyCares C'mon guys. Give me the hard sell, I'm thinking about switching from @115948 to you. Why should I? 🤔",other,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:46.605643+00:00
+2871143,@SpotifyCares how do I change to a student account? Do I need to make a new account?,feature_question,False,,aditya1325.raps@gmail.com,2026-09-11T14:13:53.365013+00:00
+1805505,"I'm trying to add one member of my family that suddendly was removed, but I receive error message ""600 - Oops.."" @403431",feature_question,True,,aditya1325.raps@gmail.com,2026-09-11T14:14:02.374352+00:00
+599479,hey @115888 you gonna release my most listened songs for 2017 soon? cause I gotta know if I was more emo than last year,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:14:09.460913+00:00
+2795619,@spotifycares I have been charged my student discount amount but I still don't have premium?,billing_dispute,True,,aditya1325.raps@gmail.com,2026-09-11T14:14:15.404429+00:00
+2466935,@117153 what is going on. Cannot login. I am premium user not able to use your Services.,account_access,True,,aditya1325.raps@gmail.com,2026-09-11T14:14:23.643540+00:00
+2746368,@115888 Do you have family offers for multiple devices?,feature_question,False,,aditya1325.raps@gmail.com,2026-09-11T14:14:28.938446+00:00
+2623510,"@SpotifyCares I do not have an account,but someone has used by bank details to get one how do I complain and trace the offender.",billing_dispute,True,,aditya1325.raps@gmail.com,2026-09-11T14:14:34.583030+00:00
+1798598,"@SpotifyCares 
+Trying to change my location between countries but the drop down menu is greyed out and wont let me change?",playback_bug,True,,aditya1325.raps@gmail.com,2026-09-11T14:14:51.809697+00:00
+732221,@SpotifyCares PLEASE move the download button!  I thought it was an obvious issue but apparently it’s not.,other,False,,aditya1325.raps@gmail.com,2026-09-11T14:14:59.644542+00:00
